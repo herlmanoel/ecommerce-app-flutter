@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 class ProductCard extends StatelessWidget {
   Product product;
   double widthFather;
-  ProductCard({ required this.widthFather, required this.product, Key? key}) : super(key: key);
+  ProductCard({required this.widthFather, required this.product, Key? key})
+      : super(key: key);
+  getColor() {
+    return (product.id % 2) == 0
+        ? const Color(0xFFEFC5E0)
+        : const Color(0xFFD1C3DC);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,25 +19,24 @@ class ProductCard extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var sizeCard = (size.width / 2) - 10;
     return Container(
-      margin: const EdgeInsets.only(right: 20),
-      padding: const EdgeInsets.all(paddingCard),
+      // margin: const EdgeInsets.only(right: 20),
+      // padding: const EdgeInsets.all(paddingCard),
       decoration: BoxDecoration(
-        color: const Color(0xFFCFCFCF),
+        color: getColor(),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
+        boxShadow: const [
+          // BoxShadow(
+          //   color: Colors.grey.withOpacity(0.5),
+          //   spreadRadius: 2,
+          //   blurRadius: 7,
+          //   offset: const Offset(0, 3), // changes position of shadow
+          // ),
         ],
       ),
       width: 100,
       child: Column(
         children: [
-          textTag("Free shipping"),
-          const SizedBox(height: 20),
+          const SizedBox(height: 28),
           Transform.scale(
             scale: 1.2,
             child: Center(child: product.imagePrimary),
@@ -58,31 +63,6 @@ class ProductCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget textTag(String text) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.only(top: 5, bottom: 5, left: 8, right: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
-          ),
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.amber,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Container(),
-        )
-      ],
     );
   }
 }

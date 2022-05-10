@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/models/product.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class ProductItem extends StatelessWidget {
   Product product;
@@ -13,14 +14,15 @@ class ProductItem extends StatelessWidget {
       margin: const EdgeInsets.only(right: 20),
       padding: const EdgeInsets.all(paddingCard),
       decoration: BoxDecoration(
-        color: const Color(0xFFCFCFCF),
+        color: const Color(0xFFEFEEED),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
+          // box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 4),
+            blurRadius: 4,
+            color: const Color(0xFF000000).withOpacity(0.25),
+            inset: true,
           ),
         ],
       ),

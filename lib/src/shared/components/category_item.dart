@@ -30,13 +30,23 @@ class CategoryItem extends StatelessWidget {
         },
         child: Text(
           category.title,
-          style: const TextStyle(fontSize: 15, color: Colors.black),
+          style: TextStyle(
+            fontSize: 15,
+            color: const Color(0xFF343A40),
+            fontWeight: getFontWeight(),
+          ),
         ),
       ),
     );
   }
 
+  FontWeight getFontWeight() {
+    return category.isSelected == true ? FontWeight.w900 : FontWeight.w500;
+  }
+
   getColor() {
-    return category.isSelected == true ? Colors.black : Colors.grey[300];
+    return category.isSelected == true
+        ? const Color(0xFF343A40)
+        : const Color.fromRGBO(207, 207, 207, 0.5);
   }
 }

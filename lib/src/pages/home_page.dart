@@ -29,21 +29,34 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: const Color(0xFFF7F6F4),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
+          // padding: const EdgeInsets.only(
+          //   left: 20,
+          // ),
           child: SafeArea(
             child: Column(children: [
-              searchAndNotifications(),
-              const SizedBox(height: 20),
-              categoriesListHorizontal(),
-              const SizedBox(height: 20),
-              textTitleSession("Hot sales"),
-              const SizedBox(height: 20),
-              cardsProductsHorizontal(),
-              const SizedBox(height: 20),
-              textTitleSession("Recently viewed"),
-              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
+                child: searchAndNotifications(),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 20),
+                child: Column(children: [
+                  const SizedBox(height: 20),
+                  categoriesListHorizontal(),
+                  const SizedBox(height: 20),
+                  textTitleSession("Hot sales"),
+                  const SizedBox(height: 20),
+                  cardsProductsHorizontal(),
+                  const SizedBox(height: 20),
+                  textTitleSession("Recently viewed"),
+                  const SizedBox(height: 20),
+                ]),
+              ),
               // cardsProductsVertical(),
-              listCard(),
+              Container(
+                padding: const EdgeInsets.only(right: 20, left: 20),
+                child: listCard(),
+              ),
             ]),
           ),
         ));
@@ -57,8 +70,8 @@ class _HomePageState extends State<HomePage> {
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 15,
-          crossAxisSpacing: 15,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
           childAspectRatio: 0.68,
         ),
         itemBuilder: (context, i) =>
@@ -70,17 +83,17 @@ class _HomePageState extends State<HomePage> {
 
   Row textTitleSession(String text) {
     return Row(
-              children: [
-                Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Expanded(child: Container())
-              ],
-            );
+      children: [
+        Text(
+          text,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Expanded(child: Container())
+      ],
+    );
   }
 
   Widget cardsProductsHorizontal() {

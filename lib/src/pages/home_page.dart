@@ -28,46 +28,48 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFFF7F6F4),
-        body: SingleChildScrollView(
-          // padding: const EdgeInsets.only(
-          //   left: 20,
-          // ),
-          child: SafeArea(
-            child: Column(children: [
-              Container(
-                padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
-                child: searchAndNotifications(),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 20),
-                child: Column(children: [
-                  const SizedBox(height: 20),
-                  categoriesListHorizontal(),
-                  const SizedBox(height: 20),
-                  textTitleSession("Hot sales"),
-                  const SizedBox(height: 20),
-                  cardsProductsHorizontal(),
-                  const SizedBox(height: 20),
-                  textTitleSession("Recently viewed"),
-                  const SizedBox(height: 20),
-                ]),
-              ),
-              // cardsProductsVertical(),
-              Container(
-                padding: const EdgeInsets.only(right: 20, left: 20),
-                child: listCard(),
-              ),
-            ]),
-          ),
+        body: SafeArea(
+          child: Column(children: [
+            Container(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
+              child: searchAndNotifications(),
+            ),
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(children: [
+                    const SizedBox(height: 20),
+                    categoriesListHorizontal(),
+                    const SizedBox(height: 20),
+                    textTitleSession("Hot sales"),
+                    const SizedBox(height: 20),
+                    cardsProductsHorizontal(),
+                    const SizedBox(height: 20),
+                    textTitleSession("Recently viewed"),
+                    const SizedBox(height: 20),
+                  ]),
+                ),
+                // cardsProductsVertical(),
+
+                Container(
+                  height: 180,
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: listCard(),
+                ),
+              ],
+            )
+          ]),
         ));
   }
 
   Widget listCard() {
     var size = MediaQuery.of(context).size;
     return SizedBox(
-      height: 600,
+      // height: 600,
       width: MediaQuery.of(context).size.width,
       child: GridView.builder(
+        shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 20,
